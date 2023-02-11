@@ -21,10 +21,31 @@ class CharactersViewController: UIViewController {
     private var headerView = UIView()
     
     private lazy var titleLabel: UILabel = {
-        let label = UILabel(font: .proximaNovaSemibold(size: 24), textColor: .black)
+        let label = UILabel(font: .proximaNovaSemibold(size: 28), textColor: .black)
         label.text = "Characters"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private lazy var searchBar: RickMortySearchBar = {
+        let searchBar = RickMortySearchBar()
+        searchBar.placeholder = "Search character"
+        searchBar.delegate = self
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        return searchBar
+    }()
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .clear
+        tableView.separatorInset = .zero
+        tableView.separatorColor = .clear
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.register(CharacterViewCell.self, forCellReuseIdentifier: CharacterViewCell.identifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
     }()
     
     //MARK: - Lifecycle
@@ -43,11 +64,10 @@ class CharactersViewController: UIViewController {
     //MARK: - API
     
     private func fetchData() {
-        apiService.fetchCharacters { (response) in
-            guard let _ = response else {
-                print("no characters")
-                return
-            }
+        apiService.fetchCharacters { [weak self] (response) in
+            guard let `self` = self, let response = response else { return }
+            self.viewModel.characters = response.items
+            self.tableView.reloadData()
         }
     }
     
@@ -61,7 +81,7 @@ class CharactersViewController: UIViewController {
     }
     
     private func buildHierarchy() {
-        view.addSubviews([headerView])
+        view.addSubviews([headerView, searchBar, tableView])
         headerView.addSubview(titleLabel)
     }
     
@@ -72,12 +92,23 @@ class CharactersViewController: UIViewController {
         headerView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(53 + topPadding)
+            make.height.equalTo(56 + topPadding)
         }
         
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(16)
-            make.bottom.equalToSuperview().inset(12)
+            make.bottom.equalToSuperview().inset(8)
+        }
+        
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(headerView.snp.bottom)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.height.equalTo(32)
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(searchBar.snp.bottom).offset(24)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 }

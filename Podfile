@@ -9,5 +9,6 @@ target 'rickmorty' do
 
 pod 'Alamofire'
 pod 'SnapKit'
+pod 'Nuke'
 
 end
