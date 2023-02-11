@@ -7,25 +7,61 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68CE84473A33BEAA2653D4F8 /* Pods_rickmorty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78AF167D4861924895DEED2B /* Pods_rickmorty.framework */; };
 		FA35654E29967D610075D71D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35654D29967D610075D71D /* AppDelegate.swift */; };
 		FA35655029967D610075D71D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35654F29967D610075D71D /* SceneDelegate.swift */; };
-		FA35655229967D610075D71D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35655129967D610075D71D /* ViewController.swift */; };
-		FA35655529967D610075D71D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA35655329967D610075D71D /* Main.storyboard */; };
 		FA35655829967D610075D71D /* rickmorty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA35655629967D610075D71D /* rickmorty.xcdatamodeld */; };
 		FA35655A29967D640075D71D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA35655929967D640075D71D /* Assets.xcassets */; };
-		FA35655D29967D640075D71D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA35655B29967D640075D71D /* LaunchScreen.storyboard */; };
+		FA35656A299685A90075D71D /* ProximaNova-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA356567299685A90075D71D /* ProximaNova-Regular.ttf */; };
+		FA35656B299685A90075D71D /* ProximaNova-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA356568299685A90075D71D /* ProximaNova-Bold.ttf */; };
+		FA35656C299685A90075D71D /* ProximaNova-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA356569299685A90075D71D /* ProximaNova-Semibold.ttf */; };
+		FA356571299686440075D71D /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA356570299686440075D71D /* CharactersViewController.swift */; };
+		FA356575299686990075D71D /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA356574299686990075D71D /* CharactersViewModel.swift */; };
+		FA356579299688A30075D71D /* URLRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA356578299688A30075D71D /* URLRequestFactory.swift */; };
+		FA35657B299689080075D71D /* NetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35657A299689080075D71D /* NetworkEnvironment.swift */; };
+		FA35657D29968B9C0075D71D /* NetworkRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35657C29968B9C0075D71D /* NetworkRoute.swift */; };
+		FA35657F29968E490075D71D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35657E29968E490075D71D /* NetworkService.swift */; };
+		FA35658229968F450075D71D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35658129968F450075D71D /* Constants.swift */; };
+		FA356584299690030075D71D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA356583299690030075D71D /* NetworkError.swift */; };
+		FA3565862996908B0075D71D /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3565852996908B0075D71D /* ApiService.swift */; };
+		FA356588299691620075D71D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA356587299691620075D71D /* NetworkManager.swift */; };
+		FA35658C299692540075D71D /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35658B299692540075D71D /* Character.swift */; };
+		FA35658F29969A0F0075D71D /* UILabel + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35658E29969A0F0075D71D /* UILabel + Ext.swift */; };
+		FA35659129969A410075D71D /* UIFont + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35659029969A410075D71D /* UIFont + Ext.swift */; };
+		FAD687552996A1A700FD6E5C /* UIColor + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD687542996A1A700FD6E5C /* UIColor + Ext.swift */; };
+		FAD687572996A25300FD6E5C /* UIView + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD687562996A25300FD6E5C /* UIView + Ext.swift */; };
+		FAD68759299784C700FD6E5C /* RickMortySearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD68758299784C700FD6E5C /* RickMortySearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19BFB169B2861B9D5AC2A041 /* Pods-rickmorty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rickmorty.release.xcconfig"; path = "Target Support Files/Pods-rickmorty/Pods-rickmorty.release.xcconfig"; sourceTree = "<group>"; };
+		78AF167D4861924895DEED2B /* Pods_rickmorty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rickmorty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E7AC6B06C9FEDEDCCB8D36A /* Pods-rickmorty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rickmorty.debug.xcconfig"; path = "Target Support Files/Pods-rickmorty/Pods-rickmorty.debug.xcconfig"; sourceTree = "<group>"; };
 		FA35654A29967D610075D71D /* rickmorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rickmorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA35654D29967D610075D71D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA35654F29967D610075D71D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FA35655129967D610075D71D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FA35655429967D610075D71D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA35655729967D610075D71D /* rickmorty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = rickmorty.xcdatamodel; sourceTree = "<group>"; };
 		FA35655929967D640075D71D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FA35655C29967D640075D71D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		FA35655E29967D640075D71D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA356567299685A90075D71D /* ProximaNova-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.ttf"; sourceTree = "<group>"; };
+		FA356568299685A90075D71D /* ProximaNova-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Bold.ttf"; sourceTree = "<group>"; };
+		FA356569299685A90075D71D /* ProximaNova-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Semibold.ttf"; sourceTree = "<group>"; };
+		FA356570299686440075D71D /* CharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewController.swift; sourceTree = "<group>"; };
+		FA356574299686990075D71D /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
+		FA356578299688A30075D71D /* URLRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestFactory.swift; sourceTree = "<group>"; };
+		FA35657A299689080075D71D /* NetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironment.swift; sourceTree = "<group>"; };
+		FA35657C29968B9C0075D71D /* NetworkRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRoute.swift; sourceTree = "<group>"; };
+		FA35657E29968E490075D71D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		FA35658129968F450075D71D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FA356583299690030075D71D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		FA3565852996908B0075D71D /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		FA356587299691620075D71D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FA35658B299692540075D71D /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		FA35658E29969A0F0075D71D /* UILabel + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Ext.swift"; sourceTree = "<group>"; };
+		FA35659029969A410075D71D /* UIFont + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Ext.swift"; sourceTree = "<group>"; };
+		FAD6875329969E9300FD6E5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAD687542996A1A700FD6E5C /* UIColor + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Ext.swift"; sourceTree = "<group>"; };
+		FAD687562996A25300FD6E5C /* UIView + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Ext.swift"; sourceTree = "<group>"; };
+		FAD68758299784C700FD6E5C /* RickMortySearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickMortySearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +69,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68CE84473A33BEAA2653D4F8 /* Pods_rickmorty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A79423D5EDFF69BF64BEB32 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				78AF167D4861924895DEED2B /* Pods_rickmorty.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E282853C2E7CFEDFF5C2C0F8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E7AC6B06C9FEDEDCCB8D36A /* Pods-rickmorty.debug.xcconfig */,
+				19BFB169B2861B9D5AC2A041 /* Pods-rickmorty.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FA35654129967D610075D71D = {
 			isa = PBXGroup;
 			children = (
 				FA35654C29967D610075D71D /* rickmorty */,
 				FA35654B29967D610075D71D /* Products */,
+				E282853C2E7CFEDFF5C2C0F8 /* Pods */,
+				3A79423D5EDFF69BF64BEB32 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +114,136 @@
 		FA35654C29967D610075D71D /* rickmorty */ = {
 			isa = PBXGroup;
 			children = (
-				FA35654D29967D610075D71D /* AppDelegate.swift */,
-				FA35654F29967D610075D71D /* SceneDelegate.swift */,
-				FA35655129967D610075D71D /* ViewController.swift */,
-				FA35655329967D610075D71D /* Main.storyboard */,
-				FA35655929967D640075D71D /* Assets.xcassets */,
-				FA35655B29967D640075D71D /* LaunchScreen.storyboard */,
-				FA35655E29967D640075D71D /* Info.plist */,
-				FA35655629967D610075D71D /* rickmorty.xcdatamodeld */,
+				FA35656D299685CE0075D71D /* Application */,
+				FA35658029968F350075D71D /* Helpers */,
+				FA35656E299686010075D71D /* Controllers */,
+				FA3565722996864B0075D71D /* ViewModels */,
+				FA35659229969B7F0075D71D /* Views */,
+				FA356589299691DE0075D71D /* Models */,
+				FA356576299686DE0075D71D /* API */,
+				FA356565299685030075D71D /* Resources */,
 			);
 			path = rickmorty;
+			sourceTree = "<group>";
+		};
+		FA356565299685030075D71D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FA3565662996851D0075D71D /* Fonts */,
+				FA35655929967D640075D71D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FA3565662996851D0075D71D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FA356568299685A90075D71D /* ProximaNova-Bold.ttf */,
+				FA356567299685A90075D71D /* ProximaNova-Regular.ttf */,
+				FA356569299685A90075D71D /* ProximaNova-Semibold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FA35656D299685CE0075D71D /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				FAD6875329969E9300FD6E5C /* Info.plist */,
+				FA35655629967D610075D71D /* rickmorty.xcdatamodeld */,
+				FA35654D29967D610075D71D /* AppDelegate.swift */,
+				FA35654F29967D610075D71D /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		FA35656E299686010075D71D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA35656F299686210075D71D /* Characters */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FA35656F299686210075D71D /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				FA356570299686440075D71D /* CharactersViewController.swift */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		FA3565722996864B0075D71D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FA356573299686830075D71D /* Characters */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FA356573299686830075D71D /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				FA356574299686990075D71D /* CharactersViewModel.swift */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		FA356576299686DE0075D71D /* API */ = {
+			isa = PBXGroup;
+			children = (
+				FA3565772996888D0075D71D /* Network */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		FA3565772996888D0075D71D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FA3565852996908B0075D71D /* ApiService.swift */,
+				FA356587299691620075D71D /* NetworkManager.swift */,
+				FA35657E29968E490075D71D /* NetworkService.swift */,
+				FA35657C29968B9C0075D71D /* NetworkRoute.swift */,
+				FA356578299688A30075D71D /* URLRequestFactory.swift */,
+				FA35657A299689080075D71D /* NetworkEnvironment.swift */,
+				FA356583299690030075D71D /* NetworkError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		FA35658029968F350075D71D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FA35658129968F450075D71D /* Constants.swift */,
+				FA35658D299699110075D71D /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FA356589299691DE0075D71D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA35658B299692540075D71D /* Character.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FA35658D299699110075D71D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA35658E29969A0F0075D71D /* UILabel + Ext.swift */,
+				FA35659029969A410075D71D /* UIFont + Ext.swift */,
+				FAD687542996A1A700FD6E5C /* UIColor + Ext.swift */,
+				FAD687562996A25300FD6E5C /* UIView + Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FA35659229969B7F0075D71D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FAD68758299784C700FD6E5C /* RickMortySearchBar.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +253,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA35656129967D640075D71D /* Build configuration list for PBXNativeTarget "rickmorty" */;
 			buildPhases = (
+				A528718B083170E586C0B8B9 /* [CP] Check Pods Manifest.lock */,
 				FA35654629967D610075D71D /* Sources */,
 				FA35654729967D610075D71D /* Frameworks */,
 				FA35654829967D610075D71D /* Resources */,
+				D33321CD16FB1361F6FDA4F4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,46 +306,85 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA35655D29967D640075D71D /* LaunchScreen.storyboard in Resources */,
 				FA35655A29967D640075D71D /* Assets.xcassets in Resources */,
-				FA35655529967D610075D71D /* Main.storyboard in Resources */,
+				FA35656C299685A90075D71D /* ProximaNova-Semibold.ttf in Resources */,
+				FA35656A299685A90075D71D /* ProximaNova-Regular.ttf in Resources */,
+				FA35656B299685A90075D71D /* ProximaNova-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A528718B083170E586C0B8B9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-rickmorty-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D33321CD16FB1361F6FDA4F4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rickmorty/Pods-rickmorty-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rickmorty/Pods-rickmorty-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rickmorty/Pods-rickmorty-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA35654629967D610075D71D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA35655229967D610075D71D /* ViewController.swift in Sources */,
+				FA356571299686440075D71D /* CharactersViewController.swift in Sources */,
 				FA35654E29967D610075D71D /* AppDelegate.swift in Sources */,
+				FAD687572996A25300FD6E5C /* UIView + Ext.swift in Sources */,
+				FA3565862996908B0075D71D /* ApiService.swift in Sources */,
+				FAD687552996A1A700FD6E5C /* UIColor + Ext.swift in Sources */,
+				FA35658F29969A0F0075D71D /* UILabel + Ext.swift in Sources */,
+				FA356588299691620075D71D /* NetworkManager.swift in Sources */,
 				FA35655829967D610075D71D /* rickmorty.xcdatamodeld in Sources */,
+				FA35657B299689080075D71D /* NetworkEnvironment.swift in Sources */,
+				FA35657F29968E490075D71D /* NetworkService.swift in Sources */,
+				FA35658229968F450075D71D /* Constants.swift in Sources */,
 				FA35655029967D610075D71D /* SceneDelegate.swift in Sources */,
+				FA35658C299692540075D71D /* Character.swift in Sources */,
+				FA356579299688A30075D71D /* URLRequestFactory.swift in Sources */,
+				FA35657D29968B9C0075D71D /* NetworkRoute.swift in Sources */,
+				FA356584299690030075D71D /* NetworkError.swift in Sources */,
+				FA35659129969A410075D71D /* UIFont + Ext.swift in Sources */,
+				FAD68759299784C700FD6E5C /* RickMortySearchBar.swift in Sources */,
+				FA356575299686990075D71D /* CharactersViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		FA35655329967D610075D71D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA35655429967D610075D71D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		FA35655B29967D640075D71D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA35655C29967D640075D71D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FA35655F29967D640075D71D /* Debug */ = {
@@ -288,17 +505,19 @@
 		};
 		FA35656229967D640075D71D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E7AC6B06C9FEDEDCCB8D36A /* Pods-rickmorty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8KZVTK9MJH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = rickmorty/Info.plist;
+				INFOPLIST_FILE = rickmorty/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
@@ -317,17 +536,19 @@
 		};
 		FA35656329967D640075D71D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19BFB169B2861B9D5AC2A041 /* Pods-rickmorty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8KZVTK9MJH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = rickmorty/Info.plist;
+				INFOPLIST_FILE = rickmorty/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
