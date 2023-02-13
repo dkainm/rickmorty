@@ -44,6 +44,7 @@ class CharactersViewController: UIViewController {
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
         tableView.register(CharacterViewCell.self, forCellReuseIdentifier: CharacterViewCell.identifier)
+        tableView.register(PaginationViewCell.self, forCellReuseIdentifier: PaginationViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -63,10 +64,18 @@ class CharactersViewController: UIViewController {
     
     //MARK: - API
     
-    func fetchData() {
-        apiService.fetchCharacters(parameters: viewModel.searchParameters) { [weak self] (response) in
+    func fetchData(page: Int? = nil) {
+        apiService.fetchCharacters(page: page, parameters: viewModel.searchParameters) { [weak self] (response) in
             guard let `self` = self, let response = response else { return }
-            self.viewModel.characters = response.items
+            
+            if let nextPage = self.viewModel.pagination?.nextPage,
+               response.pagination.prevPage == nextPage - 1 {
+                self.viewModel.characters += response.items
+            } else {
+                self.viewModel.characters = response.items
+            }
+            
+            self.viewModel.pagination = response.pagination
             self.tableView.reloadData()
         }
     }

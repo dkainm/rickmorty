@@ -25,6 +25,9 @@ class URLRequestFactory {
         components.path += "/api"
         components.path += "/character"
         components.queryItems = []
+        if let page = page {
+            components.queryItems?.append(URLQueryItem(name: "page", value: "\(page)"))
+        }
         if let name = parameters.name {
             components.queryItems?.append(URLQueryItem(name: "name", value: name))
         }
