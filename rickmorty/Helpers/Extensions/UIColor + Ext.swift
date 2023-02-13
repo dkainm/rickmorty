@@ -9,6 +9,11 @@ import UIKit
 
 extension UIColor {
     
+    ///#0000FF
+    static var main: UIColor {
+        return UIColor(red: 0, green: 0, blue: 1, alpha: 1.00)
+    }
+    
     ///#F4F4F9
     static var background: UIColor {
         return UIColor(red: 0.96, green: 0.96, blue: 0.98, alpha: 1.00)

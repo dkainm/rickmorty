@@ -15,8 +15,8 @@ class ApiService {
         self.networkManager = networkManager
     }
         
-    func fetchCharacters(page: Int? = nil, completion: @escaping(CharactersResponse?) -> Void) { //completion: @escaping(CharactersResponse?) -> Void) {
-        let route = NetworkRoute.characters(page: page)
+    func fetchCharacters(page: Int? = nil, parameters: SearchParameters, completion: @escaping(CharactersResponse?) -> Void) {
+        let route = NetworkRoute.characters(page: page, parameters: parameters)
         networkManager.fetchData(route: route, response: completion)
     }
 }

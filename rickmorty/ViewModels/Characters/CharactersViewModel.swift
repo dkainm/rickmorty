@@ -9,10 +9,12 @@ import Foundation
 
 protocol CharactersViewModelType {
     var characters: [Character] { get set }
+    var searchParameters: SearchParameters { get }
 }
 
 class CharactersViewModel: CharactersViewModelType {
     
     var characters: [Character] = []
+    var searchParameters = SearchParameters()
     
 }

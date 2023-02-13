@@ -1,24 +1,28 @@
 PODS:
   - Alamofire (5.5.0)
+  - IQKeyboardManagerSwift (6.5.9)
   - Nuke (10.6.1)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - Alamofire
+  - IQKeyboardManagerSwift
   - Nuke
   - SnapKit
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - IQKeyboardManagerSwift
     - Nuke
     - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
   Nuke: 3ca210aee6d90756605c5125cbe40569fd9c06f7
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 7766208719c85bd86a8b4451ef12ce210e5ae943
+PODFILE CHECKSUM: 29c11ed32389dd6f6fcb9a675695328bae785e45
 
 COCOAPODS: 1.11.3

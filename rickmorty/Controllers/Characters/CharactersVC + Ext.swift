@@ -28,12 +28,18 @@ extension CharactersViewController: UITableViewDataSource, UITableViewDelegate {
 extension CharactersViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        print(textField.text ?? "")
+        guard let text = textField.text, !text.isEmpty else {
+            viewModel.searchParameters.name = nil
+            fetchData()
+            return
+        }
+        viewModel.searchParameters.name = text
+        fetchData()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("return")
-        return true
+        view.endEditing(true)
+        return false
     }
     
 }

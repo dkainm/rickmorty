@@ -10,5 +10,6 @@ target 'rickmorty' do
 pod 'Alamofire'
 pod 'SnapKit'
 pod 'Nuke'
+pod 'IQKeyboardManagerSwift'
 
 end

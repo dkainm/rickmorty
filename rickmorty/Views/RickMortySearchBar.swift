@@ -12,6 +12,7 @@ class RickMortySearchBar: UIView {
     let textField: UITextField = {
         let textField = UITextField()
         textField.font = .proximaNovaRegular(size: 16)
+        textField.returnKeyType = .search
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()

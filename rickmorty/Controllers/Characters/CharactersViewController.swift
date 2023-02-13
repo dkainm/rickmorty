@@ -63,8 +63,8 @@ class CharactersViewController: UIViewController {
     
     //MARK: - API
     
-    private func fetchData() {
-        apiService.fetchCharacters { [weak self] (response) in
+    func fetchData() {
+        apiService.fetchCharacters(parameters: viewModel.searchParameters) { [weak self] (response) in
             guard let `self` = self, let response = response else { return }
             self.viewModel.characters = response.items
             self.tableView.reloadData()
