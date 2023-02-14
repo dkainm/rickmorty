@@ -13,6 +13,7 @@ class RickMortySearchBar: UIView {
         let textField = UITextField()
         textField.font = .proximaNovaRegular(size: 16)
         textField.returnKeyType = .search
+        textField.clearButtonMode = .whileEditing
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -112,6 +113,10 @@ class RickMortySearchBar: UIView {
     @objc func setField() {
         guard textField.text == "" || textField.text == nil || textField.text == " " else { return }
         textField.setLeftImage(UIImage(named: "search"))
+    }
+    
+    func clearText() {
+        textField.text = ""
     }
 }
 

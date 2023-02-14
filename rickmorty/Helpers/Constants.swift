@@ -5,7 +5,7 @@
 //  Created by Alex Rudoi on 10/2/23.
 //
 
-import Foundation
+import UIKit
 
 typealias NetworkResponse = (Result<Data, Error>) -> Void
 

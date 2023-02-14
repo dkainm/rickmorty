@@ -38,7 +38,9 @@ extension CharactersViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            break
+            let vc = CharacterCardViewController()
+            vc.character = viewModel.characters[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
         default:
             fetchData(page: viewModel.pagination?.nextPage)
         }
@@ -47,6 +49,14 @@ extension CharactersViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension CharactersViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        hideHeader()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        openHeader()
+    }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text, !text.isEmpty else {
@@ -59,6 +69,7 @@ extension CharactersViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        hideHeader()
         view.endEditing(true)
         return false
     }

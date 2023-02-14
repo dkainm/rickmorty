@@ -15,9 +15,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        let charactersVC = CharactersViewController()
-        let navigationController = UINavigationController(rootViewController: charactersVC)
-        window?.rootViewController = navigationController
+        
+        let charactersVC = UINavigationController(rootViewController: CharactersViewController())
+        let favoritesVC = UINavigationController(rootViewController: FavoritesViewController())
+        
+        charactersVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "search"), tag: 1)
+        favoritesVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "search"), tag: 2)
+        
+        let tabBarController = RickMortyTabBarController()
+        tabBarController.setViewControllers([charactersVC, favoritesVC], animated: true)
+        
+        window?.rootViewController = tabBarController//navigationController
         window?.makeKeyAndVisible()
     }
 
