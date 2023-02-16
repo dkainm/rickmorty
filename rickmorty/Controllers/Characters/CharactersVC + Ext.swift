@@ -21,7 +21,7 @@ extension CharactersViewController: UITableViewDataSource, UITableViewDelegate {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: CharacterViewCell.identifier, for: indexPath) as! CharacterViewCell
-            cell.configure(with: viewModel.characters[indexPath.row])
+            cell.viewModel = CharacterViewCellModel(character: viewModel.character(for: indexPath))
             cell.isFilteringMode = viewModel.isFilteringMode
             return cell
         default:
@@ -41,7 +41,7 @@ extension CharactersViewController: UITableViewDataSource, UITableViewDelegate {
         switch indexPath.section {
         case 0:
             let vc = CharacterCardViewController()
-            vc.character = viewModel.characters[indexPath.row]
+            vc.viewModel = CharacterViewModel(character: viewModel.character(for: indexPath))
             navigationController?.pushViewController(vc, animated: true)
         default:
             fetchData(page: viewModel.pagination?.nextPage)

@@ -15,6 +15,7 @@ protocol CharactersViewModelType {
     var headerHeight: CGFloat { get }
     var numberOfSections: Int { get }
     func numberOfRows(for section: Int) -> Int
+    func character(for indexPath: IndexPath) -> Character
 }
 
 class CharactersViewModel: CharactersViewModelType {
@@ -37,6 +38,10 @@ class CharactersViewModel: CharactersViewModelType {
     
     func numberOfRows(for section: Int) -> Int {
         return section == 0 ? characters.count : 1
+    }
+    
+    func character(for indexPath: IndexPath) -> Character {
+        return characters[indexPath.row]
     }
     
 }

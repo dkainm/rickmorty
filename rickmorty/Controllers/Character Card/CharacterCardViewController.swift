@@ -12,10 +12,10 @@ class CharacterCardViewController: UIViewController {
     
     //MARK: Properties
     
-    var character: Character! {
+    var viewModel: CharacterViewModelType! {
         didSet { configureContent() }
     }
-    
+
     //MARK: UI Elements
     
     private var headerView = UIView()
@@ -257,19 +257,19 @@ class CharacterCardViewController: UIViewController {
     //MARK: Helpers
     
     private func configureContent() {
-        Nuke.loadImage(with: character.image, into: avatarImageView)
+        Nuke.loadImage(with: viewModel.image, into: avatarImageView)
         
-        titleLabel.text = character.name
-        nameLabel.text = character.name
+        titleLabel.text = viewModel.name
+        nameLabel.text = viewModel.name
         
-        statusLabel.text = character.status
-        speciesLabel.text = character.species
-        typeLabel.text = character.type ?? "-"
-        genderLabel.text = character.gender
-        originLabel.text = character.origin.name
-        locationLabel.text = character.location.name
+        statusLabel.text = viewModel.status
+        speciesLabel.text = viewModel.species
+        typeLabel.text = viewModel.type
+        genderLabel.text = viewModel.gender
+        originLabel.text = viewModel.originName
+        locationLabel.text = viewModel.locationName
         
-        character.getFavoriteStatus() { [weak self] isFavorite, _ in
+        viewModel.getFavoriteStatus() { [weak self] isFavorite in
             self?.favoriteButton.setImage(UIImage(named: isFavorite ? "star.fill" : "star.outline"), for: .normal)
         }
     }
@@ -277,13 +277,13 @@ class CharacterCardViewController: UIViewController {
     //MARK: Selectors
     
     @objc private func changeFavoriteState() {
-        character.getFavoriteStatus() { [weak self] isFavorite, savedCharacter in
-            if isFavorite, let savedCharacter = savedCharacter {
+        viewModel.getFavoriteStatus() { [weak self] isFavorite in
+            if isFavorite {
                 self?.favoriteButton.setImage(UIImage(named: "star.outline"), for: .normal)
-                DatabaseManager.shared.delete(savedCharacter)
+                self?.viewModel.deleteCharacter()
             } else {
                 self?.favoriteButton.setImage(UIImage(named: "star.fill"), for: .normal)
-                DatabaseManager.shared.save(character: character)
+                self?.viewModel.saveCharacter()
             }
         }
     }

@@ -60,9 +60,18 @@ class Character: Decodable {
             completion(character != nil, character)
         }
     }
+    
+    func getSavedCharacter(completion: (SavedCharacter?) -> ()) {
+        DatabaseManager.shared.fetchCharacters { complete, charactersArray in
+            guard complete, let characters = charactersArray else {
+                completion(nil)
+                return
+            }
+            completion(characters.first(where: {$0.id == id}))
+        }
+    }
 }
 
 class Location: Decodable {
     let name: String
-    let url: String?
 }

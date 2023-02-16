@@ -7,12 +7,15 @@
 
 import UIKit
 import Nuke
+import CoreData
 
 class CharacterViewCell: UITableViewCell {
     
     //MARK: Properties
     
-    var character: Character!
+    var viewModel: CharacterViewCellModelType = CharacterViewCellModel() {
+        didSet { configureContent() }
+    }
     
     var isFilteringMode = false {
         didSet {
@@ -93,15 +96,13 @@ class CharacterViewCell: UITableViewCell {
     
     //MARK: - Helpers
     
-    func configure(with character: Character) {
-        self.character = character
+    func configureContent() {
+        nameLabel.text = viewModel.name
+        statusLabel.text = viewModel.status
         
-        nameLabel.text = character.name
-        statusLabel.text = character.status.capitalized
+        Nuke.loadImage(with: viewModel.image, into: avatarImageView)
         
-        Nuke.loadImage(with: character.image, into: avatarImageView)
-        
-        character.getFavoriteStatus { [weak self] isFavorite, _ in
+        viewModel.getFavoriteStatus { [weak self] isFavorite in
             self?.favoriteImageView.isHidden = !isFavorite
         }
     }

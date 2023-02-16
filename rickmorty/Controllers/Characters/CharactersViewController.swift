@@ -64,6 +64,7 @@ class CharactersViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
         tableView.contentInset.bottom = 80
         tableView.register(CharacterViewCell.self, forCellReuseIdentifier: CharacterViewCell.identifier)
         tableView.register(PaginationViewCell.self, forCellReuseIdentifier: PaginationViewCell.identifier)
@@ -77,6 +78,9 @@ class CharactersViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         fetchData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -176,5 +180,17 @@ class CharactersViewController: UIViewController {
         openHeader()
         searchBar.clearText()
         view.endEditing(true)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            tableView.contentInset.bottom = keyboardHeight
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        tableView.contentInset.bottom = 110
     }
 }

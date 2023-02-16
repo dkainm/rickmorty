@@ -9,4 +9,94 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
     
+    //MARK: Properties
+    
+    var viewModel: FavoritesViewModelType! = FavoritesViewModel()
+    
+    let apiService = ApiService()
+    private let databaseManager = DatabaseManager.shared
+    
+    //MARK: UI Elements
+    
+    var headerView = UIView()
+    
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel(font: .proximaNovaSemibold(size: 28), textColor: .black)
+        label.text = "Favorites"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .clear
+        tableView.separatorInset = .zero
+        tableView.separatorColor = .clear
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.contentInset.bottom = 80
+        tableView.register(CharacterViewCell.self, forCellReuseIdentifier: CharacterViewCell.identifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
+    //MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        fetchData()
+    }
+    
+    //MARK: - Database
+    
+    func fetchData() {
+        databaseManager.fetchCharacters { [weak self] (complete, charactersArray) in
+            guard let `self` = self, let characters = charactersArray, complete else {
+                //TODO: No favorites view
+                return
+            }
+            self.viewModel.savedCharacters = characters
+            self.tableView.reloadData()
+        }
+    }
+    
+    //MARK: - UI Methods
+    
+    private func configureUI() {
+        view.backgroundColor = .background
+        
+        buildHierarchy()
+        configureConstraints()
+    }
+    
+    private func buildHierarchy() {
+        view.addSubviews([headerView, tableView])
+        headerView.addSubview(titleLabel)
+    }
+    
+    private func configureConstraints() {
+        headerView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(viewModel.headerHeight)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.bottom.equalToSuperview().inset(8)
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(headerView.snp.bottom).offset(8)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+    
 }

@@ -19,4 +19,9 @@ class ApiService {
         let route = NetworkRoute.characters(page: page, parameters: parameters)
         networkManager.fetchData(route: route, response: completion)
     }
+    
+    func fetchCharacter(id: Int, completion: @escaping(Character?) -> Void) {
+        let route = NetworkRoute.character(id: id)
+        networkManager.fetchData(route: route, response: completion)
+    }
 }

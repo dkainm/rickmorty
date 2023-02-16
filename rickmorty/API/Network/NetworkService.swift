@@ -18,6 +18,11 @@ class NetworkService: Networking {
         guard let request = route.request else { return }
 
         AF.request(request).responseData { response in
+            
+            if response.response?.statusCode == nil {
+//                NotificationCenter.default.addObserver(forName: NSNotification.Name("noInternet"), object: nil, queue: nil)
+            }
+            
             switch response.result {
             case .success(let data):
                 completion(.success(data))

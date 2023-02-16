@@ -13,6 +13,7 @@ protocol NetworkRouteProtocol {
 
 enum NetworkRoute: NetworkRouteProtocol {
     case characters(page: Int?, parameters: SearchParameters)
+    case character(id: Int)
     
     var request: URLRequest? {
         return URLRequestFactory().getRequest(for: self)

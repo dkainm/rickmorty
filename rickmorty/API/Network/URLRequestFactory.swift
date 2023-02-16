@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
  
 class URLRequestFactory {
     
@@ -17,6 +18,8 @@ class URLRequestFactory {
         
         case .characters(let page, let parameters):
             return getCharactersRequest(page: page, parameters: parameters)
+        case .character(let id):
+            return getCharacterRequest(id: id)
             
         }
     }
@@ -43,6 +46,15 @@ class URLRequestFactory {
         if let gender = parameters.gender {
             components.queryItems?.append(URLQueryItem(name: "gender", value: gender))
         }
+        guard let url = components.url else { return nil }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        return request
+    }
+    
+    private func getCharacterRequest(id: Int) -> URLRequest? {
+        components.path += "/api"
+        components.path += "/character/\(id)"
         guard let url = components.url else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
