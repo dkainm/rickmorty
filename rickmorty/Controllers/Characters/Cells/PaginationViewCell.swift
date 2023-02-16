@@ -13,6 +13,12 @@ class PaginationViewCell: UITableViewCell {
     
     var pagination: Pagination!
     
+    var isFilteringMode = false {
+        didSet {
+            container.backgroundColor = isFilteringMode ? .black.withAlphaComponent(0.05) : .white
+        }
+    }
+    
     //MARK: UI Elements
     
     private lazy var container: UIView = {

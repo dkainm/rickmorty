@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 class CharactersResponse: Decodable {
     let pagination: Pagination
@@ -48,6 +49,17 @@ class Character: Decodable {
     let origin: Location
     let location: Location
     let image: String
+    
+    func getFavoriteStatus(completion: (Bool, SavedCharacter?) -> ()) {
+        DatabaseManager.shared.fetchCharacters { complete, charactersArray in
+            guard complete, let characters = charactersArray else {
+                completion(false, nil)
+                return
+            }
+            let character = characters.first(where: {$0.id == id})
+            completion(character != nil, character)
+        }
+    }
 }
 
 class Location: Decodable {

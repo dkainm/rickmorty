@@ -32,7 +32,7 @@ class DatabaseManager {
         }
     }
     
-    func fetchSavedCharacters(completion: (_ complete: Bool, _ charactersArray: [SavedCharacter]?) -> ()) {
+    func fetchCharacters(completion: (_ complete: Bool, _ charactersArray: [SavedCharacter]?) -> ()) {
         guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "SavedCharacter")
         do {

@@ -56,7 +56,7 @@ class CharactersViewController: UIViewController {
         return stack
     }()
     
-    private lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.separatorInset = .zero
@@ -64,7 +64,7 @@ class CharactersViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
+        tableView.contentInset.bottom = 80
         tableView.register(CharacterViewCell.self, forCellReuseIdentifier: CharacterViewCell.identifier)
         tableView.register(PaginationViewCell.self, forCellReuseIdentifier: PaginationViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -82,6 +82,7 @@ class CharactersViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        tableView.reloadData()
     }
     
     //MARK: - API
@@ -168,6 +169,7 @@ class CharactersViewController: UIViewController {
     //MARK: - Selectors
     
     @objc private func cancelSearch() {
+        viewModel.isFilteringMode = false
         viewModel.searchParameters.name = nil
         fetchData()
         

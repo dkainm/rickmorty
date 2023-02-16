@@ -14,6 +14,13 @@ class CharacterViewCell: UITableViewCell {
     
     var character: Character!
     
+    var isFilteringMode = false {
+        didSet {
+            container.backgroundColor = isFilteringMode ? .clear : .white
+            arrowImageView.isHidden = isFilteringMode
+        }
+    }
+    
     //MARK: UI Elements
     
     private lazy var container: UIView = {
@@ -35,6 +42,12 @@ class CharacterViewCell: UITableViewCell {
     private var nameLabel = UILabel(font: .proximaNovaBold(size: 16), textColor: .black)
     private var statusLabel = UILabel(font: .proximaNovaRegular(size: 14), textColor: .placeholder)
     
+    private lazy var favoriteImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "star.fill"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     private lazy var arrowImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "chevron.right"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,7 +55,11 @@ class CharacterViewCell: UITableViewCell {
     }()
     
     private lazy var stackView: UIStackView = {
-        let textStack = UIStackView(arrangedSubviews: [nameLabel, statusLabel])
+        let textTopStack = UIStackView(arrangedSubviews: [nameLabel, favoriteImageView, UIView()])
+        textTopStack.alignment = .leading
+        textTopStack.spacing = 4
+        
+        let textStack = UIStackView(arrangedSubviews: [textTopStack, statusLabel])
         textStack.axis = .vertical
         textStack.spacing = 2
         
@@ -83,6 +100,10 @@ class CharacterViewCell: UITableViewCell {
         statusLabel.text = character.status.capitalized
         
         Nuke.loadImage(with: character.image, into: avatarImageView)
+        
+        character.getFavoriteStatus { [weak self] isFavorite, _ in
+            self?.favoriteImageView.isHidden = !isFavorite
+        }
     }
     
     //MARK: - UI Methods
@@ -116,6 +137,10 @@ class CharacterViewCell: UITableViewCell {
         
         arrowImageView.snp.makeConstraints { make in
             make.height.width.equalTo(24)
+        }
+        
+        favoriteImageView.snp.makeConstraints { make in
+            make.height.width.equalTo(18)
         }
     }
 }

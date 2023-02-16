@@ -67,11 +67,6 @@ class CharacterCardViewController: UIViewController {
     
     private lazy var favoriteButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "star.outline"), for: .normal)
-        
-        //TODO: !!!
-        button.isEnabled = false
-        
         button.addTarget(self, action: #selector(changeFavoriteState), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -273,12 +268,24 @@ class CharacterCardViewController: UIViewController {
         genderLabel.text = character.gender
         originLabel.text = character.origin.name
         locationLabel.text = character.location.name
+        
+        character.getFavoriteStatus() { [weak self] isFavorite, _ in
+            self?.favoriteButton.setImage(UIImage(named: isFavorite ? "star.fill" : "star.outline"), for: .normal)
+        }
     }
     
     //MARK: Selectors
     
     @objc private func changeFavoriteState() {
-        print(#function)
+        character.getFavoriteStatus() { [weak self] isFavorite, savedCharacter in
+            if isFavorite, let savedCharacter = savedCharacter {
+                self?.favoriteButton.setImage(UIImage(named: "star.outline"), for: .normal)
+                DatabaseManager.shared.delete(savedCharacter)
+            } else {
+                self?.favoriteButton.setImage(UIImage(named: "star.fill"), for: .normal)
+                DatabaseManager.shared.save(character: character)
+            }
+        }
     }
     
     @objc private func handleDismissal() {

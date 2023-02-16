@@ -22,11 +22,13 @@ extension CharactersViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: CharacterViewCell.identifier, for: indexPath) as! CharacterViewCell
             cell.configure(with: viewModel.characters[indexPath.row])
+            cell.isFilteringMode = viewModel.isFilteringMode
             return cell
         default:
             guard let pagination = viewModel.pagination else { return UITableViewCell() }
             let cell = tableView.dequeueReusableCell(withIdentifier: PaginationViewCell.identifier, for: indexPath) as! PaginationViewCell
             cell.configure(with: pagination)
+            cell.isFilteringMode = viewModel.isFilteringMode
             return cell
         }
     }
@@ -51,19 +53,27 @@ extension CharactersViewController: UITableViewDataSource, UITableViewDelegate {
 extension CharactersViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        viewModel.isFilteringMode = true
+        tableView.reloadData()
+        
         hideHeader()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        viewModel.isFilteringMode = false
+        tableView.reloadData()
+        
         openHeader()
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text, !text.isEmpty else {
+            viewModel.isFilteringMode = false
             viewModel.searchParameters.name = nil
             fetchData()
             return
         }
+        viewModel.isFilteringMode = true
         viewModel.searchParameters.name = text
         fetchData()
     }
