@@ -64,7 +64,7 @@ class CharactersViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
-//        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -16, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
         tableView.register(CharacterViewCell.self, forCellReuseIdentifier: CharacterViewCell.identifier)
         tableView.register(PaginationViewCell.self, forCellReuseIdentifier: PaginationViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -149,6 +149,7 @@ class CharactersViewController: UIViewController {
             self.headerView.isHidden = false
             self.view.layoutIfNeeded()
         }, completion: { _ in
+            self.floatingTabBarController?.tabBarIsHidden = false
             self.cancelButtonWidthAnchor.isActive = true
         })
     }
@@ -159,6 +160,7 @@ class CharactersViewController: UIViewController {
             self.headerView.isHidden = true
             self.view.layoutIfNeeded()
         }, completion: { _ in
+            self.floatingTabBarController?.tabBarIsHidden = true
             self.cancelButtonWidthAnchor.isActive = false
         })
     }

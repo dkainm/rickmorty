@@ -176,12 +176,11 @@ class CharacterCardViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = true
+        floatingTabBarController?.tabBarIsHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        //TODO: super func ??
-        tabBarController?.tabBar.isHidden = false
+        floatingTabBarController?.tabBarIsHidden = false
     }
     
     //MARK: - UI Methods

@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		73FA149D4B5E5EFC14E1A29F /* Pods_rickmorty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BA14CBCAC7F2036A6034340 /* Pods_rickmorty.framework */; };
 		FA29E997299A571B002265ED /* PaginationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29E996299A571B002265ED /* PaginationViewCell.swift */; };
-		FA29E99A299A5DC9002265ED /* RickMortyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29E999299A5DC9002265ED /* RickMortyTabBarController.swift */; };
+		FA29E99A299A5DC9002265ED /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29E999299A5DC9002265ED /* TabBarController.swift */; };
 		FA29E99D299A606A002265ED /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29E99C299A606A002265ED /* FavoritesViewController.swift */; };
 		FA29E99F299AAF38002265ED /* CharacterCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29E99E299AAF38002265ED /* CharacterCardViewController.swift */; };
 		FA29E9A3299AB072002265ED /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29E9A2299AB072002265ED /* DatabaseManager.swift */; };
 		FA29E9A5299AC006002265ED /* UIStackView + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29E9A4299AC006002265ED /* UIStackView + Ext.swift */; };
+		FA29E9A7299CD4DD002265ED /* FloatingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29E9A6299CD4DD002265ED /* FloatingBarView.swift */; };
+		FA29E9A9299E69FC002265ED /* UIViewController + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA29E9A8299E69FC002265ED /* UIViewController + Ext.swift */; };
 		FA35654E29967D610075D71D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35654D29967D610075D71D /* AppDelegate.swift */; };
 		FA35655029967D610075D71D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA35654F29967D610075D71D /* SceneDelegate.swift */; };
 		FA35655829967D610075D71D /* rickmorty.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA35655629967D610075D71D /* rickmorty.xcdatamodeld */; };
@@ -49,11 +51,13 @@
 		1BA14CBCAC7F2036A6034340 /* Pods_rickmorty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rickmorty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		487A86EBF1FEC76DB874CE02 /* Pods-rickmorty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rickmorty.release.xcconfig"; path = "Target Support Files/Pods-rickmorty/Pods-rickmorty.release.xcconfig"; sourceTree = "<group>"; };
 		FA29E996299A571B002265ED /* PaginationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationViewCell.swift; sourceTree = "<group>"; };
-		FA29E999299A5DC9002265ED /* RickMortyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickMortyTabBarController.swift; sourceTree = "<group>"; };
+		FA29E999299A5DC9002265ED /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		FA29E99C299A606A002265ED /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		FA29E99E299AAF38002265ED /* CharacterCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCardViewController.swift; sourceTree = "<group>"; };
 		FA29E9A2299AB072002265ED /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		FA29E9A4299AC006002265ED /* UIStackView + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Ext.swift"; sourceTree = "<group>"; };
+		FA29E9A6299CD4DD002265ED /* FloatingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingBarView.swift; sourceTree = "<group>"; };
+		FA29E9A8299E69FC002265ED /* UIViewController + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ext.swift"; sourceTree = "<group>"; };
 		FA35654A29967D610075D71D /* rickmorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rickmorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA35654D29967D610075D71D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA35654F29967D610075D71D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,7 +122,7 @@
 		FA29E998299A5DB7002265ED /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				FA29E999299A5DC9002265ED /* RickMortyTabBarController.swift */,
+				FA29E999299A5DC9002265ED /* TabBarController.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -295,6 +299,7 @@
 				FA35659029969A410075D71D /* UIFont + Ext.swift */,
 				FAD687542996A1A700FD6E5C /* UIColor + Ext.swift */,
 				FAD687562996A25300FD6E5C /* UIView + Ext.swift */,
+				FA29E9A8299E69FC002265ED /* UIViewController + Ext.swift */,
 				FAD6875A299788BA00FD6E5C /* UITextField + Ext.swift */,
 				FAD687612997966400FD6E5C /* UITableViewCell + Ext.swift */,
 				FA29E9A4299AC006002265ED /* UIStackView + Ext.swift */,
@@ -306,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				FAD68758299784C700FD6E5C /* RickMortySearchBar.swift */,
+				FA29E9A6299CD4DD002265ED /* FloatingBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -438,7 +444,7 @@
 				FA356571299686440075D71D /* CharactersViewController.swift in Sources */,
 				FA29E99D299A606A002265ED /* FavoritesViewController.swift in Sources */,
 				FA35654E29967D610075D71D /* AppDelegate.swift in Sources */,
-				FA29E99A299A5DC9002265ED /* RickMortyTabBarController.swift in Sources */,
+				FA29E99A299A5DC9002265ED /* TabBarController.swift in Sources */,
 				FAD687622997966400FD6E5C /* UITableViewCell + Ext.swift in Sources */,
 				FA7111CB299A4EDD007D5F31 /* SearchParameters.swift in Sources */,
 				FAD687572996A25300FD6E5C /* UIView + Ext.swift in Sources */,
@@ -451,11 +457,13 @@
 				FA356588299691620075D71D /* NetworkManager.swift in Sources */,
 				FA35655829967D610075D71D /* rickmorty.xcdatamodeld in Sources */,
 				FA35657B299689080075D71D /* NetworkEnvironment.swift in Sources */,
+				FA29E9A9299E69FC002265ED /* UIViewController + Ext.swift in Sources */,
 				FAD6875B299788BA00FD6E5C /* UITextField + Ext.swift in Sources */,
 				FA29E9A5299AC006002265ED /* UIStackView + Ext.swift in Sources */,
 				FA35657F29968E490075D71D /* NetworkService.swift in Sources */,
 				FA35658229968F450075D71D /* Constants.swift in Sources */,
 				FA35655029967D610075D71D /* SceneDelegate.swift in Sources */,
+				FA29E9A7299CD4DD002265ED /* FloatingBarView.swift in Sources */,
 				FA35658C299692540075D71D /* Character.swift in Sources */,
 				FA356579299688A30075D71D /* URLRequestFactory.swift in Sources */,
 				FA35657D29968B9C0075D71D /* NetworkRoute.swift in Sources */,

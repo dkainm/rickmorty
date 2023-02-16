@@ -19,10 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let charactersVC = UINavigationController(rootViewController: CharactersViewController())
         let favoritesVC = UINavigationController(rootViewController: FavoritesViewController())
         
-        charactersVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "search"), tag: 1)
-        favoritesVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "search"), tag: 2)
+        charactersVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "rick"), tag: 1)
+        favoritesVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "star"), tag: 2)
         
-        let tabBarController = RickMortyTabBarController()
+        let tabBarController = TabBarController()
         tabBarController.setViewControllers([charactersVC, favoritesVC], animated: true)
         
         window?.rootViewController = tabBarController//navigationController
