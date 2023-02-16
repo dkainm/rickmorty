@@ -15,7 +15,7 @@ class PaginationViewCell: UITableViewCell {
     
     var isFilteringMode = false {
         didSet {
-            container.backgroundColor = isFilteringMode ? .black.withAlphaComponent(0.05) : .white
+            container.backgroundColor = isFilteringMode ? .black.withAlphaComponent(0.05) : .card
         }
     }
     
@@ -23,7 +23,7 @@ class PaginationViewCell: UITableViewCell {
     
     private lazy var container: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .card
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -50,7 +50,7 @@ class PaginationViewCell: UITableViewCell {
         super.layoutSubviews()
         container.layer.shadowOffset = CGSize(width: 0, height: 4)
         container.layer.shadowRadius = 8
-        container.layer.shadowColor = UIColor.placeholder.cgColor
+        container.layer.shadowColor = UIColor.shadow.cgColor
         container.layer.shadowOpacity = 0.08
         container.layer.cornerRadius = 8
         container.layer.masksToBounds = false

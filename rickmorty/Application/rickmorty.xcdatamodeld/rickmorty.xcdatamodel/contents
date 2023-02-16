@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="21G72" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="SavedCharacter" representedClassName="SavedCharacter" syncable="YES" codeGenerationType="class">
-        <attribute name="gender" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="String"/>
-        <attribute name="locationName" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="originName" optional="YES" attributeType="String"/>
-        <attribute name="species" optional="YES" attributeType="String"/>
         <attribute name="status" optional="YES" attributeType="String"/>
-        <attribute name="type" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="SavedCharacter" positionX="-63" positionY="-18" width="128" height="164"/>
+        <element name="SavedCharacter" positionX="-63" positionY="-18" width="128" height="89"/>
     </elements>
 </model>

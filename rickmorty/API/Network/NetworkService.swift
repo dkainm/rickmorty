@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 
+typealias NetworkResponse = (Result<Data, Error>) -> Void
+
 protocol Networking {
     func request(route: NetworkRouteProtocol, completion: @escaping NetworkResponse)
 }
@@ -20,7 +22,7 @@ class NetworkService: Networking {
         AF.request(request).responseData { response in
             
             if response.response?.statusCode == nil {
-//                NotificationCenter.default.addObserver(forName: NSNotification.Name("noInternet"), object: nil, queue: nil)
+                NotificationCenter.default.post(name: NSNotification.Name("noInternet"), object: nil)
             }
             
             switch response.result {

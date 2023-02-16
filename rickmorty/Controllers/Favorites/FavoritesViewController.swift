@@ -42,11 +42,21 @@ class FavoritesViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var emptyListView: EmptyListView = {
+        let view = EmptyListView(title: "No favorites yet", subtitle: "Add some in the characters tab")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("noInternet"), object: nil, queue: nil) { [weak self] _ in
+            self?.showDefaultAlert(with: "No Internet Connection")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,9 +70,10 @@ class FavoritesViewController: UIViewController {
     func fetchData() {
         databaseManager.fetchCharacters { [weak self] (complete, charactersArray) in
             guard let `self` = self, let characters = charactersArray, complete else {
-                //TODO: No favorites view
+                self?.emptyListView.isHidden = false
                 return
             }
+            self.emptyListView.isHidden = !characters.isEmpty
             self.viewModel.savedCharacters = characters
             self.tableView.reloadData()
         }
@@ -78,7 +89,7 @@ class FavoritesViewController: UIViewController {
     }
     
     private func buildHierarchy() {
-        view.addSubviews([headerView, tableView])
+        view.addSubviews([headerView, emptyListView, tableView])
         headerView.addSubview(titleLabel)
     }
     
@@ -96,6 +107,11 @@ class FavoritesViewController: UIViewController {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(headerView.snp.bottom).offset(8)
             make.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        emptyListView.snp.makeConstraints { make in
+            make.centerX.equalTo(tableView)
+            make.centerY.equalTo(tableView).multipliedBy(0.8)
         }
     }
     

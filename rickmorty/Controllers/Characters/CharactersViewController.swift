@@ -81,6 +81,10 @@ class CharactersViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("noInternet"), object: nil, queue: nil) { [weak self] _ in
+            self?.showDefaultAlert(with: "No Internet Connection")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

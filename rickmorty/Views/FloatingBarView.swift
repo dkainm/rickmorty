@@ -35,14 +35,14 @@ class FloatingBarView: UIView {
         layer.cornerRadius = bounds.height / 2
 
         layer.shadowPath = UIBezierPath(rect: bounds).cgPath
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.1
+        layer.shadowColor = UIColor.shadow.cgColor
+        layer.shadowOpacity = 0.15
         layer.shadowOffset = .zero
         layer.shadowRadius = bounds.height / 2
     }
     
     private func configureUI() {
-        backgroundColor = .white
+        backgroundColor = .card
         
         setupStackView(icons)
         update(selectedIndex: 0)

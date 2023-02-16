@@ -22,34 +22,8 @@ class DatabaseManager {
         savedCharacter.id = Int16(character.id)
         savedCharacter.name = character.name
         savedCharacter.status = character.status
-        savedCharacter.species = character.species
-        savedCharacter.type = character.type
-        savedCharacter.gender = character.gender
-        savedCharacter.originName = character.origin.name
-        savedCharacter.locationName = character.location.name
         savedCharacter.image = character.image
         
-        do {
-            try managedContext.save()
-            completion?(true)
-        } catch {
-            print("Failed to save data: ", error.localizedDescription)
-            completion?(false)
-        }
-    }
-    
-    func save(character: SavedCharacter, completion: ((_ finished: Bool) -> ())? = nil) {
-        guard let managedContext = appDelegate?.persistentContainer.viewContext else { return }
-        let savedCharacter = SavedCharacter(context: managedContext)
-        savedCharacter.id = character.id
-        savedCharacter.name = character.name
-        savedCharacter.status = character.status
-        savedCharacter.species = character.species
-        savedCharacter.type = character.type
-        savedCharacter.gender = character.gender
-        savedCharacter.originName = character.originName
-        savedCharacter.locationName = character.locationName
-        savedCharacter.image = character.image
         do {
             try managedContext.save()
             completion?(true)

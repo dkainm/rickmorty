@@ -33,31 +33,31 @@ class CharacterViewModel: CharacterViewModelType {
     }
     
     var name: String {
-        return character.name
+        return character.name.markIfEmpty()
     }
     
     var status: String {
-        return character.status.capitalized
+        return character.status.capitalized.markIfEmpty()
     }
     
     var species: String {
-        return character.species
+        return character.species.markIfEmpty()
     }
     
     var type: String {
-        return character.type ?? "-"
+        return character.type.markIfEmpty()
     }
     
     var gender: String {
-        return character.gender
+        return character.gender.markIfEmpty()
     }
     
     var originName: String {
-        return character.origin.name
+        return character.origin.name.markIfEmpty()
     }
     
     var locationName: String {
-        return character.location.name
+        return character.location.name.markIfEmpty()
     }
     
     var image: String? {

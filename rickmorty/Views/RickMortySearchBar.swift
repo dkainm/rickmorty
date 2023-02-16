@@ -98,7 +98,7 @@ class RickMortySearchBar: UIView {
         
         textField.semanticContentAttribute = .forceLeftToRight
         textField.textAlignment = .left
-        textField.setLeftImage(UIImage(named: "search"))
+        textField.setLeftImage(UIImage(named: "search")?.withTintColor(.unselected, renderingMode: .automatic))
         
         textField.textColor = .black
         textField.backgroundColor = .gray
@@ -107,7 +107,6 @@ class RickMortySearchBar: UIView {
         textField.enablesReturnKeyAutomatically = true
         
         textField.addTarget(self, action: #selector(setField), for: .editingChanged)
-//        textField.addTarget(self, action: #selector(activateField), for: .editingDidBegin)
     }
     
     @objc func setField() {

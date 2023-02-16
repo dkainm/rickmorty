@@ -55,14 +55,12 @@ extension CharactersViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         viewModel.isFilteringMode = true
         tableView.reloadData()
-        
         hideHeader()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         viewModel.isFilteringMode = false
         tableView.reloadData()
-        
         openHeader()
     }
     

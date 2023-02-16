@@ -23,7 +23,7 @@ class CharacterCardViewController: UIViewController {
     private var titleLabel = UILabel(font: .proximaNovaRegular(size: 16), textColor: .black)
     
     private lazy var backImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "chevron.left"))
+        let imageView = UIImageView(image: UIImage(named: "chevron.left")?.withTintColor(.black, renderingMode: .automatic))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -37,12 +37,22 @@ class CharacterCardViewController: UIViewController {
         return stack
     }()
     
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.layer.masksToBounds = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView
+    }()
+    
+    private var contentView = UIView()
+    
     private lazy var cardView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .card
         view.layer.shadowOffset = CGSize(width: 0, height: 0)
         view.layer.shadowRadius = 18
-        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowColor = UIColor.shadow.cgColor
         view.layer.shadowOpacity = 0.15
         view.layer.cornerRadius = 16
         view.layer.masksToBounds = false
@@ -148,7 +158,7 @@ class CharacterCardViewController: UIViewController {
         let originStack = UIStackView(arrangedSubviews: [originTitleLabel, originLabel])
         let locationStack = UIStackView(arrangedSubviews: [locationTitleLabel, locationLabel])
         
-        let settingsStack = UIStackView(arrangedSubviews: [statusStack, speciesStack, genderStack, originStack, locationStack])
+        let settingsStack = UIStackView(arrangedSubviews: [statusStack, speciesStack, typeStack, genderStack, originStack, locationStack])
         settingsStack.axis = .vertical
         settingsStack.spacing = 24
         settingsStack.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 0, right: 32)
@@ -188,8 +198,10 @@ class CharacterCardViewController: UIViewController {
     }
     
     private func buildHierarchy() {
-        view.addSubviews([headerView, cardView])
+        view.addSubviews([headerView, scrollView])
         headerView.addSubview(backStackView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(cardView)
         cardView.addSubview(stackView)
     }
     
@@ -211,9 +223,22 @@ class CharacterCardViewController: UIViewController {
             make.height.width.equalTo(24)
         }
         
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(headerView.snp.bottom)
+            make.leading.trailing.equalTo(view)
+            make.bottom.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.edges.equalTo(scrollView)
+            make.width.equalTo(scrollView)
+            make.bottom.equalTo(scrollView).inset(28)
+        }
+        
         cardView.snp.makeConstraints { make in
-            make.top.equalTo(headerView.snp.bottom).offset(16)
+            make.top.equalToSuperview().inset(16)
             make.leading.trailing.equalToSuperview().inset(16)
+            make.bottom.equalToSuperview()
         }
         
         stackView.snp.makeConstraints { make in
@@ -270,7 +295,9 @@ class CharacterCardViewController: UIViewController {
         locationLabel.text = viewModel.locationName
         
         viewModel.getFavoriteStatus() { [weak self] isFavorite in
-            self?.favoriteButton.setImage(UIImage(named: isFavorite ? "star.fill" : "star.outline"), for: .normal)
+            let filledImage = UIImage(named: "star.fill")?.withTintColor(.main, renderingMode: .automatic)
+            let emptyImage = UIImage(named: "star.outline")?.withTintColor(.icon, renderingMode: .automatic)
+            self?.favoriteButton.setImage(isFavorite ? filledImage : emptyImage, for: .normal)
         }
     }
     
@@ -279,10 +306,10 @@ class CharacterCardViewController: UIViewController {
     @objc private func changeFavoriteState() {
         viewModel.getFavoriteStatus() { [weak self] isFavorite in
             if isFavorite {
-                self?.favoriteButton.setImage(UIImage(named: "star.outline"), for: .normal)
+                self?.favoriteButton.setImage(UIImage(named: "star.outline")?.withTintColor(.icon, renderingMode: .automatic), for: .normal)
                 self?.viewModel.deleteCharacter()
             } else {
-                self?.favoriteButton.setImage(UIImage(named: "star.fill"), for: .normal)
+                self?.favoriteButton.setImage(UIImage(named: "star.fill")?.withTintColor(.main, renderingMode: .automatic), for: .normal)
                 self?.viewModel.saveCharacter()
             }
         }

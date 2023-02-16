@@ -19,7 +19,7 @@ class CharacterViewCell: UITableViewCell {
     
     var isFilteringMode = false {
         didSet {
-            container.backgroundColor = isFilteringMode ? .clear : .white
+            container.backgroundColor = isFilteringMode ? .clear : .card
             arrowImageView.isHidden = isFilteringMode
         }
     }
@@ -28,7 +28,7 @@ class CharacterViewCell: UITableViewCell {
     
     private lazy var container: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .card
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -46,13 +46,14 @@ class CharacterViewCell: UITableViewCell {
     private var statusLabel = UILabel(font: .proximaNovaRegular(size: 14), textColor: .placeholder)
     
     private lazy var favoriteImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "star.fill"))
+        let imageView = UIImageView(image: UIImage(named: "star.fill")?.withTintColor(.main, renderingMode: .automatic))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private lazy var arrowImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "chevron.right"))
+        let imageView = UIImageView(image: UIImage(named: "chevron.right")?
+                                        .withTintColor(.unselected, renderingMode: .automatic))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -88,7 +89,7 @@ class CharacterViewCell: UITableViewCell {
         super.layoutSubviews()
         container.layer.shadowOffset = CGSize(width: 0, height: 4)
         container.layer.shadowRadius = 8
-        container.layer.shadowColor = UIColor.placeholder.cgColor
+        container.layer.shadowColor = UIColor.shadow.cgColor
         container.layer.shadowOpacity = 0.08
         container.layer.cornerRadius = 16
         container.layer.masksToBounds = false
