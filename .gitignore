@@ -1,0 +1,17 @@
+xcuserdata/
+
+*.hmap
+
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+.build/
+
+Pods/
+*.xcworkspace
+
+Carthage/Build/
+
+Dependencies/
+.accio/

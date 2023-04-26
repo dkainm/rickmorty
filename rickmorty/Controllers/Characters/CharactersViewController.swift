@@ -8,13 +8,11 @@
 import UIKit
 import SnapKit
 
-class CharactersViewController: UIViewController {
+final class CharactersViewController: UIViewController {
     
     //MARK: Properties
     
-    var viewModel: CharactersViewModelType! = CharactersViewModel()
-    
-    private let apiService = ApiService()
+    let viewModel = CharactersViewModel()
     
     //MARK: UI Elements
     
@@ -81,33 +79,29 @@ class CharactersViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("noInternet"), object: nil, queue: nil) { [weak self] _ in
-            self?.showDefaultAlert(with: "No Internet Connection")
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("noInternet"), object: nil, queue: nil) { [weak self] _ in
+            self?.showDefaultAlert(with: "No Internet Connection")
+        }
+        
         navigationController?.setNavigationBarHidden(true, animated: false)
         tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("noInternet"), object: nil)
     }
     
     //MARK: - API
     
     func fetchData(page: Int? = nil) {
-        apiService.fetchCharacters(page: page, parameters: viewModel.searchParameters) { [weak self] (response) in
-            guard let `self` = self, let response = response else { return }
-            
-            if let nextPage = self.viewModel.pagination?.nextPage,
-               response.pagination.prevPage == nextPage - 1 {
-                self.viewModel.characters += response.items
-            } else {
-                self.viewModel.characters = response.items
-            }
-            
-            self.viewModel.pagination = response.pagination
-            self.tableView.reloadData()
+        viewModel.fetchData(page: page) { [weak self] in
+            self?.tableView.reloadData()
         }
     }
     

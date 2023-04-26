@@ -20,6 +20,8 @@ protocol CharactersViewModelType {
 
 class CharactersViewModel: CharactersViewModelType {
     
+    private let apiService = ApiService()
+    
     var characters: [Character] = []
     var pagination: Pagination?
     var searchParameters = SearchParameters()
@@ -42,6 +44,22 @@ class CharactersViewModel: CharactersViewModelType {
     
     func character(for indexPath: IndexPath) -> Character {
         return characters[indexPath.row]
+    }
+    
+    func fetchData(page: Int? = nil, completion: @escaping () -> ()) {
+        apiService.fetchCharacters(page: page, parameters: searchParameters) { [weak self] (response) in
+            guard let `self` = self, let response = response else { return }
+            
+            if let nextPage = self.pagination?.nextPage,
+               response.pagination.prevPage == nextPage - 1 {
+                self.characters += response.items
+            } else {
+                self.characters = response.items
+            }
+            
+            self.pagination = response.pagination
+            completion()
+        }
     }
     
 }

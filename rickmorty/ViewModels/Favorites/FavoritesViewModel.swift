@@ -16,6 +16,9 @@ protocol FavoritesViewModelType {
 }
 
 class FavoritesViewModel: FavoritesViewModelType {
+
+    private let apiService = ApiService()
+    private let databaseManager = DatabaseManager.shared
     
     var savedCharacters: [SavedCharacter] = []
     
@@ -31,6 +34,24 @@ class FavoritesViewModel: FavoritesViewModelType {
     
     func savedCharacter(for indexPath: IndexPath) -> SavedCharacter {
         return savedCharacters[indexPath.row]
+    }
+    
+    func fetchData(completion: @escaping (Bool) -> ()) {
+        databaseManager.fetchCharacters { [weak self] (complete, charactersArray) in
+            guard let `self` = self, let characters = charactersArray, complete else {
+                completion(false)
+                return
+            }
+            self.savedCharacters = characters
+            completion(characters.isEmpty)
+            
+        }
+    }
+    
+    func fetchCharacter(id: Int, completion: @escaping (Character?) -> ()) {
+        apiService.fetchCharacter(id: id) { (character) in
+            completion(character)
+        }
     }
     
 }

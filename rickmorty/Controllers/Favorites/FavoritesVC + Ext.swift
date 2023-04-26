@@ -25,7 +25,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let characterID = Int(viewModel.savedCharacter(for: indexPath).id)
-        apiService.fetchCharacter(id: characterID) { [weak self] (character) in
+        viewModel.fetchCharacter(id: characterID) { [weak self] (character) in
             guard let character = character else { return }
             let vc = CharacterCardViewController()
             vc.viewModel = CharacterViewModel(character: character)

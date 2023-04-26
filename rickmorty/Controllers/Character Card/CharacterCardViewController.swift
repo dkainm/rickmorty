@@ -8,7 +8,7 @@
 import UIKit
 import Nuke
 
-class CharacterCardViewController: UIViewController {
+final class CharacterCardViewController: UIViewController {
     
     //MARK: Properties
     
